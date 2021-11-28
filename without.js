@@ -1,50 +1,46 @@
-const without = function(array1, array2)  {
-  let itemsToRemove = [];
-  let source1 = [];
-  let source2 = [];
+const without = function (array1, array2) {
+  let parsedArray = [];
+  let matchedItem;
 
+  for (const element of array1) {
+    matchedItem = false;
+    for (const item of array2) {
+      if (element === item) {
+        matchedItem = true;
+      }
+    }
+    if (matchedItem === false) {
+      parsedArray.push(element);
+    }
+  }
+
+  return parsedArray;
+};
+
+function eqArrays(array1, array2) {
   if (array1.length !== array2.length) {
-    if (array1.length > array2.length) {
-      for (let i = array2.length - 1; i < array1.length; i++) {
-        itemsToRemove.push(array1[i]);
-      }
-    } else {
-      for (let i = array1.length - 1; i < array2.length; i++) {
-        itemsToRemove.push(array2[i]);
-      }
-    }
+    console.log("false");
+    return false;
   } else {
-
+    let arrayCompare = true;
     for (let i = 0; i < array1.length; i++) {
-      // let arrayCompare = true;
-      for (let i = 0; i < array1.length; i++) {
-        if (array1[i] !== array2[i]) {
-          itemsToRemove.push(array1[i]);
-          itemsToRemove.push(array2[i]);
-        } else {
-          source1.push(array1[i]);
-          source2.push(array2[i]);
-        }
+      if (array1[i] !== array2[i]) {
+        arrayCompare = false;
       }
     }
+    console.log(arrayCompare);
+    return arrayCompare;
   }
-  console.log({source1, source2, itemsToRemove});
-  return {source1, source2, itemsToRemove};
-};
+}
 
-const assertArraysEqual = function(source1, source2) {
-  console.log('source1 is '+ source1);
-  console.log('source2 is '+ source2);
-  if (without(source1, source2) === true) {
-    console.log(`✅✅✅✅ Assertion Passed: [${source1}] === [${source2}]`);
-
+const assertArraysEqual = function (array1, array2) {
+  if (eqArrays(array1, array2) === true) {
+    console.log(`✅✅✅✅ Assertion Passed: [${array1}] === [${array2}]`);
   } else {
-    console.log(`🛑🛑🛑🛑 Assertion Failed: [${source1}] !== [${source2}]`);
-
+    console.log(`🛑🛑🛑🛑 Assertion Failed: [${array1}] !== [${array2}]`);
   }
-
 };
-const words = ["hello", "world", "lighthouse"];
-without(words, ["lighthouse"]); // no need to capture return value for this test case
-// Make sure the original array was not altered by the without function
-assertArraysEqual(words, ["hello", "world", "lighthouse"]);
+
+const words = ["hello", "world", "lighthouse", "bye"];
+// // Make sure the original arr"ay was not altered by the without function
+assertArraysEqual(without(words, ["world"]), ["hello", "lighthouse", "bye"]);
