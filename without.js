@@ -1,4 +1,4 @@
-const without = function (array1, array2) {
+const without = function(array1, array2) {
   let parsedArray = [];
   let matchedItem;
 
@@ -17,9 +17,9 @@ const without = function (array1, array2) {
   return parsedArray;
 };
 
-function eqArrays(array1, array2) {
+const eqArrays = function(array1, array2)  {
   if (array1.length !== array2.length) {
-    console.log("false");
+    console.log('false');
     return false;
   } else {
     let arrayCompare = true;
@@ -27,19 +27,27 @@ function eqArrays(array1, array2) {
       if (array1[i] !== array2[i]) {
         arrayCompare = false;
       }
+
     }
     console.log(arrayCompare);
     return arrayCompare;
+  
   }
-}
+ 
+};
 
-const assertArraysEqual = function (array1, array2) {
+
+const assertArraysEqual = function(array1, array2) {
   if (eqArrays(array1, array2) === true) {
     console.log(`✅✅✅✅ Assertion Passed: [${array1}] === [${array2}]`);
+
   } else {
     console.log(`🛑🛑🛑🛑 Assertion Failed: [${array1}] !== [${array2}]`);
+
   }
+
 };
+
 
 const words = ["hello", "world", "lighthouse", "bye"];
 // // Make sure the original arr"ay was not altered by the without function
