@@ -31,3 +31,5 @@ const test1 = findKey({
 }, x => x.stars === 2); // => "noma"
 console.log('test1: ',test1);
 assertEqual(test1, 'noma');
+
+module.exports = findKey;
