@@ -12,10 +12,11 @@ const countLetters = function(firstNames) {
         }
       }
       object[elem] = counter;
+      
     }
+    
   }
   return object;
 };
-const firstNames = "Karl Salima Agouhanna";
-// const firstNames = "Karl";
-countLetters(firstNames);
+
+module.exports = countLetters;
